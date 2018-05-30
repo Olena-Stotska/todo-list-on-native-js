@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+</head>
+<body>
+  <template id="todo-container">
+    <div class="item-block">
+      <button class="ui icon button" data-attr="done"><i class="circle outline icon"></i></button>
+      <div class="text-block"></div>
+      <button class="ui icon button" data-attr="delete"><i class="trash red icon"></i></button>
+    </div>
+  </template>
+
+  <div class="container">
+    <h1 class="header">Todo List</h1>
+
+    <form id="create-items" class="ui form">
+      <div class="ui input focus">
+        <input type="text" name="item" placeholder="Add Item">
+      </div>
+      <div class="ui buttons">
+        <button class="ui icon grey button"><i class="icon plus"></i></button>
+        <div class="or"></div>
+        <button type="button" class="ui icon black button btn-search"><i class="icon search"></i></button>
+      </div>
+    </form>
+
+    <section class="list-items"></section>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
