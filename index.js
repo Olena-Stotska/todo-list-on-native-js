@@ -17,6 +17,32 @@ function showHTMLForItem(items) {
   return items.forEach(el => addTemplateForItem(el))
 }
 
+function addTemplateForItem(inputValue) {
+  const templateContainer = template.content.cloneNode(true)
+  const textBlock = templateContainer.querySelector('.text-block')
+
+  textBlock.appendChild(document.createTextNode(inputValue))
+  sectionItems.appendChild(templateContainer)
+}
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
+}
+
+function search(str) {
+  const text = str.trim().toLowerCase()
+  const children = [...sectionItems.children]
+
+  children.forEach(element => {
+    const textElement = element.children[1].innerText.toLowerCase()
+     if (textElement.includes(text) || text === '') {
+       element.style.display = ''
+     } else {
+       element.style.display = 'none'
+     }
+  })
+}
+
 showHTMLForItem(items)
 
 sectionItems.addEventListener('click', (event) => {
@@ -69,18 +95,6 @@ sectionItems.addEventListener("keydown", (event) => {
   }
 })
 
-function addTemplateForItem(inputValue) {
-  const templateContainer = template.content.cloneNode(true)
-  const textBlock = templateContainer.querySelector('.text-block')
-
-  textBlock.appendChild(document.createTextNode(inputValue))
-  sectionItems.appendChild(templateContainer)
-}
-
-function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
-}
-
 newItemForm.addEventListener('submit', (event) => {
   event.preventDefault()
   const inputValue = capitalize(inputItem.value.trim())
@@ -92,20 +106,6 @@ newItemForm.addEventListener('submit', (event) => {
   search('')
   persist(items)
 })
-
-function search(str) {
-  const text = str.trim().toLowerCase()
-  const children = [...sectionItems.children]
-
-  children.forEach(element => {
-    const textElement = element.firstElementChild.innerText.toLowerCase()
-     if (textElement.includes(text) || text === '') {
-       element.style.display = ''
-     } else {
-       element.style.display = 'none'
-     }
-  })
-}
 
 btnSearch.addEventListener('click', () => {
    search(inputItem.value)
