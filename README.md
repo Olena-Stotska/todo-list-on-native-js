@@ -7,4 +7,3 @@
 
 * You can add items by clicking 'plus' button or pressing enter key.
 
----
